@@ -1,0 +1,28 @@
+<!-- main/templates/main/search.html -->
+{% load i18n %}
+{% extends 'main/base.html' %}
+
+{% block title %}{% trans "Search Articles" %}{% endblock %}
+
+{% block content %}
+<h2>{% trans "Search Articles" %}</h2>
+<form method="get" action="{% url 'search' %}">
+    <input type="text" name="q" placeholder="{% trans "Search for articles..." %}" value="{{ query }}">
+    <button type="submit">{% trans "Search" %}</button>
+</form>
+
+{% if articles %}
+    <h3>{% trans "Search Results:" %}</h3>
+    <ul>
+        {% for article in articles %}
+            <li>{{ article.title }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if answer %}
+        <h3>{% trans "Generated Answer:" %}</h3>
+        <p>{{ answer }}</p>
+    {% endif %}
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,53 @@
+<!-- main/templates/main/chatbot.html -->
+{% extends 'main/base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Chatbot' %}{% endblock %}
+
+{% block content %}
+<h2>{% trans 'Chat with our AI' %}</h2>
+<form id="chatbot-form" method="post">
+    {% csrf_token %}
+    <label for="message">{% trans 'Your message:' %}</label>
+    <input type="text" id="message" name="message" required>
+    <button type="submit">{% trans 'Send' %}</button>
+</form>
+<div id="response"></div>
+
+<script>
+document.getElementById('chatbot-form').onsubmit = function(event) {
+    event.preventDefault();
+    const message = document.getElementById('message').value;
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    fetch("{% url 'chatbot' %}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": csrfToken
+        },
+        body: new URLSearchParams({
+            "message": message
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const responseDiv = document.getElementById('response');
+        if (data.response) {
+            responseDiv.innerHTML = `<p>${data.response}</p>`;
+        } else {
+            responseDiv.innerHTML = `<p>Error: ${data.error}</p>`;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('response').innerHTML = `<p>Error: ${error.message}</p>`;
+    });
+};
+</script>
+{% endblock %}
+

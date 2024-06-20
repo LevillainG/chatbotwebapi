@@ -1,0 +1,10 @@
+<!-- main/templates/main/home.html -->
+{% extends 'main/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Home' %}{% endblock %}
+
+{% block content %}
+    <h2>{% trans 'Home page' %}</h2>
+    <p>{% trans 'Welcome to the home page, you can choose to change the language, speak to the chatbot or read some articles.' %}</p>
+{% endblock %}

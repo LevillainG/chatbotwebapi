@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Article List' %}{% endblock %}
+
+{% block content %}
+    <h2>{% trans 'List of Articles' %}</h2>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a>
+                <p>{% trans 'Published on' %}: {{ article.publication_date }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
