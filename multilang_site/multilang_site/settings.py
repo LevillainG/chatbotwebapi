@@ -28,8 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['chatbotwebapi.onrender.com']
 
-PORT = process.env.PORT
-
 
 # Application definition
 
