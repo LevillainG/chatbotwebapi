@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['chatbotwebapi.onrender.com']
 
+PORT = 8001
+
 
 # Application definition
 
