@@ -4,14 +4,24 @@
 {% block title %}{% trans 'Chatbot' %}{% endblock %}
 
 {% block content %}
-<h2>{% trans 'Chat with our AI' %}</h2>
-<form id="chatbot-form" method="post">
-    {% csrf_token %}
-    <label for="message">{% trans 'Your message:' %}</label>
-    <input type="text" id="message" name="message" required>
-    <button type="submit">{% trans 'Send' %}</button>
-</form>
-<div id="response"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="mt-4 mb-3">{% trans 'Chat with our AI' %}</h2>
+            <div id="chat-container" class="mb-4">
+                <!-- Chat messages will be dynamically added here -->
+            </div>
+            <form id="chatbot-form" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" id="message" name="message" class="form-control" placeholder="{% trans 'Type your message here...' %}" required>
+                    <button type="submit" class="btn btn-primary">{% trans 'Send' %}</button>
+                </div>
+            </form>
+            <div id="response" class="mt-4"></div>
+        </div>
+    </div>
+</div>
 
 <script>
 document.getElementById('chatbot-form').onsubmit = function(event) {
@@ -36,12 +46,17 @@ document.getElementById('chatbot-form').onsubmit = function(event) {
         return response.json();
     })
     .then(data => {
-        const responseDiv = document.getElementById('response');
-        if (data.response) {
-            responseDiv.innerHTML = `<p>${data.response}</p>`;
-        } else {
-            responseDiv.innerHTML = `<p>Error: ${data.error}</p>`;
-        }
+        const chatContainer = document.getElementById('chat-container');
+        const userMessageHTML = `<div class="message me">${message}</div>`;
+        const botResponseHTML = `<div class="message bot">${data.response}</div>`;
+
+        // Append user message and bot response to chat container
+        chatContainer.innerHTML += userMessageHTML + botResponseHTML;
+        // Scroll to bottom of chat container
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        
+        // Clear input field
+        document.getElementById('message').value = '';
     })
     .catch(error => {
         console.error('Error:', error);
@@ -49,5 +64,31 @@ document.getElementById('chatbot-form').onsubmit = function(event) {
     });
 };
 </script>
+
+<style>
+    /* Basic styles for the chat messages */
+    .message {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        max-width: 70%;
+        word-wrap: break-word;
+    }
+
+    /* Styles for user's messages */
+    .me {
+        background-color: #007bff;
+        color: #fff;
+        align-self: flex-end;
+    }
+
+    /* Styles for bot's messages */
+    .bot {
+        background-color: #f8f9fa;
+        color: #000;
+        align-self: flex-start;
+    }
+</style>
 {% endblock %}
+
 
