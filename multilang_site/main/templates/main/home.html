@@ -1,10 +1,20 @@
-<!-- main/templates/main/home.html -->
 {% extends 'main/base.html' %}
 {% load i18n %}
 
 {% block title %}{% trans 'Home' %}{% endblock %}
 
 {% block content %}
-    <h2>{% trans 'Home page' %}</h2>
-    <p>{% trans 'Welcome to the home page, you can choose to change the language, speak to the chatbot or read some articles.' %}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h1 class="display-4 mt-5">{% trans 'Welcome to My Site!' %}</h1>
+            <p class="lead mt-3">{% trans 'Explore and interact with our features:' %}</p>
+            <ul class="list-unstyled">
+                <li><i class="bi bi-chat-dots"></i> <a href="{% url 'chatbot' %}" class="text-decoration-none">{% trans 'Talk to our Chatbot' %}</a></li>
+                <li><i class="bi bi-journal-text"></i> <a href="{% url 'article_list' %}" class="text-decoration-none">{% trans 'Read Articles' %}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
+

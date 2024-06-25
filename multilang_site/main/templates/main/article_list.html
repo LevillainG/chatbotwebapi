@@ -4,13 +4,29 @@
 {% block title %}{% trans 'Article List' %}{% endblock %}
 
 {% block content %}
-    <h2>{% trans 'List of Articles' %}</h2>
-    <ul>
-        {% for article in articles %}
-            <li>
-                <a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a>
-                <p>{% trans 'Published on' %}: {{ article.publication_date }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="text-center">
+                <h2 class="mt-4 mb-3">{% trans 'List of Articles' %}</h2>
+            </div>
+            <ul class="list-group">
+                {% for article in articles %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h5 class="mb-1"><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h5>
+                            <small class="text-muted">{% trans 'Published on' %}: {{ article.publication_date }}</small>
+                        </div>
+                        <div class="col-sm-3 text-sm-end">
+                            <!-- Add any additional actions or icons here if needed -->
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
+

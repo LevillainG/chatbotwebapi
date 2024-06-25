@@ -4,8 +4,23 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-    <h2>{{ article.title }}</h2>
-    <p>{{ article.content }}</p>
-    <p>{% trans 'Published on' %}: {{ article.publication_date }}</p>
-    <a href="{% url 'article_list' %}">{% trans 'Back to Articles' %}</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <article class="article">
+                <header class="article-header">
+                    <h2 class="article-title">{{ article.title }}</h2>
+                    <p class="article-meta"><small class="text-muted">{% trans 'Published on' %}: {{ article.publication_date }}</small></p>
+                </header>
+                <div class="article-content">
+                    <p>{{ article.content }}</p>
+                </div>
+                <footer class="article-footer">
+                    <a href="{% url 'article_list' %}" class="btn btn-primary">{% trans 'Back to Articles' %}</a>
+                </footer>
+            </article>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
