@@ -12,6 +12,10 @@ from django.views import View
 from django.http import JsonResponse, HttpResponseBadRequest
 from transformers import pipeline
 
+#For LLM
+#from langchain.vectorstores.base import VectorStore
+#from langchain.vectorstores.faiss import FAISS
+
 #Models
 from main.models import Article  # Importe le modèle Article 
 
@@ -58,6 +62,44 @@ class ChatbotView(View):
         return HttpResponseBadRequest("No message provided")
 
 
+class RagView(View):
+    def get(self, request):
+        return render(request, 'main/rag.html')
+
+    def post(self, request):
+        user_message = request.POST.get('message')
+        if not user_message:
+            return HttpResponseBadRequest("No message provided")
+
+        # Load the FAISS index and article IDs
+        index = faiss.read_index("article_index.faiss")
+        with open("article_ids.txt", "r") as f:
+            article_ids = [int(line.strip()) for line in f]
+
+        # Tokenize and get embedding for the user's message
+        tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+        model = AutoModel.from_pretrained("distilbert-base-uncased")
+
+        inputs = tokenizer(user_message, return_tensors="pt")
+        with torch.no_grad():
+            user_embedding = model(**inputs).last_hidden_state[:, 0, :].numpy()
+
+        # Retrieve the most relevant article
+        D, I = index.search(user_embedding, k=1)
+        article_id = article_ids[I[0][0]]
+        article = Article.objects.get(id=article_id)
+
+        # Generate a response using the article content
+        gen_tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
+        gen_model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn")
+
+        inputs = gen_tokenizer(user_message + " " + article.content, return_tensors="pt")
+        summary_ids = gen_model.generate(inputs['input_ids'], max_length=50, min_length=25, length_penalty=2.0, num_beams=4, early_stopping=True)
+        response = gen_tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+
+        return JsonResponse({'response': response})
+
+
 class SetLanguageView(View):
     def get(self, request):
         language = request.GET.get('language')
@@ -72,11 +114,5 @@ class SetLanguageView(View):
 class HomeView(View):
     def get(self, request):
         return render(request, 'main/home.html')
-
-class SearchView(View):
-    def get(self, request):
-        query = request.GET.get('q', '')
-        articles = Article.objects.filter(title__icontains=query) if query else []
-        return render(request, 'main/search.html', {'articles': articles, 'query': query})
 
 
