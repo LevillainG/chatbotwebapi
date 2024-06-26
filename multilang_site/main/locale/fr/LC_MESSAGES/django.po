@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-18 10:50+0000\n"
+"POT-Creation-Date: 2024-06-26 09:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: main/models.py:7
+msgid "Title"
+msgstr "Titre"
+
+#: main/models.py:8
+msgid "Content"
+msgstr "Contenu"
+
+#: main/models.py:9
+msgid "Publication Date"
+msgstr "Date de publication"
+
 #: main/models.py:12
 msgid "article"
 msgstr "article"
@@ -25,26 +37,87 @@ msgstr "article"
 msgid "articles"
 msgstr "articles"
 
-#: main/templates/main/article_list.html:4
-msgid "Article List"
-msgstr "Articles"
-
-#: main/templates/main/article_list.html:7
-msgid "List of Articles"
-msgstr "Liste d'articles"
-
-#: main/templates/main/article_list.html:12
+#: main/templates/main/article_detail.html:13
+#: main/templates/main/article_list.html:19
 msgid "Published on"
 msgstr "Publié le"
 
-#: main/templates/main/base.html:19
+#: main/templates/main/article_detail.html:19
+msgid "Back to Articles"
+msgstr "Retour vers articles"
+
+#: main/templates/main/article_list.html:4
+msgid "Article List"
+msgstr "Liste d'articles"
+
+#: main/templates/main/article_list.html:11
+msgid "List of Articles"
+msgstr "Liste des articles"
+
+#: main/templates/main/base.html:61 main/templates/main/home.html:4
+msgid "Home"
+msgstr "Accueil"
+
+#: main/templates/main/base.html:68
 msgid "Articles"
 msgstr "Articles"
 
-#: main/templates/main/base.html:22
+#: main/templates/main/base.html:71 main/templates/main/chatbot.html:4
 msgid "Chatbot"
 msgstr "Chatbot"
 
-#: main/templates/main/base.html:26
+#: main/templates/main/base.html:74 main/templates/main/rag.html:3
+msgid "Searchbot"
+msgstr "Searchbot"
+
+#: main/templates/main/base.html:79
 msgid "Language"
-msgstr "Langue"
+msgstr "Langage"
+
+#: main/templates/main/chatbot.html:10
+msgid "Chat with our AI"
+msgstr "Parlez avec l'IA"
+
+#: main/templates/main/chatbot.html:17
+msgid "Type your message here..."
+msgstr "Tapez votre message ici..."
+
+#: main/templates/main/chatbot.html:18 main/templates/main/rag.html:11
+msgid "Send"
+msgstr "Envoyer"
+
+#: main/templates/main/home.html:10
+msgid "Welcome to My Site!"
+msgstr "Bienvenu sur mon site!"
+
+#: main/templates/main/home.html:11
+msgid "Explore and interact with our features:"
+msgstr "Explorez et interagissez avec notre chatbot"
+
+#: main/templates/main/home.html:13
+msgid "Talk to our Chatbot"
+msgstr "Parlez avec notre Chatbot"
+
+#: main/templates/main/home.html:14
+msgid "Read Articles"
+msgstr "Lisez des articles"
+
+#: main/templates/main/rag.html:6
+msgid "Search with our AI"
+msgstr "Trouvez avec notre IA"
+
+#: main/templates/main/rag.html:9
+msgid "Your message:"
+msgstr "Votre message:"
+
+#: main/templates/main/rag.html:40
+msgid "You:"
+msgstr "Vous:"
+
+#: main/templates/main/rag.html:40
+msgid "Answer:"
+msgstr "Réponse:"
+
+#: main/templates/main/rag.html:42 main/templates/main/rag.html:47
+msgid "Error:"
+msgstr "Erreur:"
