@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-18 10:50+0000\n"
+"POT-Creation-Date: 2024-06-26 09:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,107 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: main/models.py:7
+msgid "Title"
+msgstr "Title"
+
+#: main/models.py:8
+msgid "Content"
+msgstr "Content"
+
+#: main/models.py:9
+msgid "Publication Date"
+msgstr ""
+
 #: main/models.py:12
 msgid "article"
-msgstr "article"
+msgstr ""
 
 #: main/models.py:13
 msgid "articles"
-msgstr "articles"
+msgstr ""
+
+#: main/templates/main/article_detail.html:13
+#: main/templates/main/article_list.html:19
+msgid "Published on"
+msgstr ""
+
+#: main/templates/main/article_detail.html:19
+msgid "Back to Articles"
+msgstr ""
 
 #: main/templates/main/article_list.html:4
 msgid "Article List"
-msgstr "Article List"
+msgstr ""
 
-#: main/templates/main/article_list.html:7
+#: main/templates/main/article_list.html:11
 msgid "List of Articles"
-msgstr "List of Articles"
+msgstr ""
 
-#: main/templates/main/article_list.html:12
-msgid "Published on"
-msgstr "Published on"
+#: main/templates/main/base.html:61 main/templates/main/home.html:4
+msgid "Home"
+msgstr ""
 
-#: main/templates/main/base.html:19
+#: main/templates/main/base.html:68
 msgid "Articles"
-msgstr "Articles"
+msgstr ""
 
-#: main/templates/main/base.html:22
+#: main/templates/main/base.html:71 main/templates/main/chatbot.html:4
 msgid "Chatbot"
-msgstr "Chatbot"
+msgstr ""
 
-#: main/templates/main/base.html:26
+#: main/templates/main/base.html:74 main/templates/main/rag.html:3
+msgid "Searchbot"
+msgstr ""
+
+#: main/templates/main/base.html:79
 msgid "Language"
-msgstr "Language"
+msgstr ""
+
+#: main/templates/main/chatbot.html:10
+msgid "Chat with our AI"
+msgstr ""
+
+#: main/templates/main/chatbot.html:17
+msgid "Type your message here..."
+msgstr ""
+
+#: main/templates/main/chatbot.html:18 main/templates/main/rag.html:11
+msgid "Send"
+msgstr ""
+
+#: main/templates/main/home.html:10
+msgid "Welcome to My Site!"
+msgstr "Welcome to my website!"
+
+#: main/templates/main/home.html:11
+msgid "Explore and interact with our features:"
+msgstr ""
+
+#: main/templates/main/home.html:13
+msgid "Talk to our Chatbot"
+msgstr ""
+
+#: main/templates/main/home.html:14
+msgid "Read Articles"
+msgstr ""
+
+#: main/templates/main/rag.html:6
+msgid "Search with our AI"
+msgstr ""
+
+#: main/templates/main/rag.html:9
+msgid "Your message:"
+msgstr ""
+
+#: main/templates/main/rag.html:40
+msgid "You:"
+msgstr ""
+
+#: main/templates/main/rag.html:40
+msgid "Answer:"
+msgstr ""
+
+#: main/templates/main/rag.html:42 main/templates/main/rag.html:47
+msgid "Error:"
+msgstr ""
