@@ -1,6 +1,6 @@
 # chatbotwebapi
 
-Temps passé à réaliser le projet : 16h environs.
+Temps passé à réaliser le projet : 16h environ.
 
 Le chatbot provient du site Huggingace.com, ses réponses peuvent être étranges, c'est normal.
 Demandez par exemple "Combien fait 2+2", normalement il devrait répondre.
