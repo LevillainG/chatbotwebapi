@@ -12,6 +12,6 @@ Django étant un framework que je n'ai jamais utilisé, j'ai beaucoup usé de ch
 lors de l'écriture de mon code. Pour ce qui est de la structure du site web, 
 j'ai regardé les tutoriels officiels de Django. 
 
-J'ai aussi demandé à ChatGPT de me fournir du CSS pour rendre l'interface utilisateur plus agréable à regarder.
+J'ai aussi demandé à ChatGPT de me fournir de l'aide pour le CSS afin de rendre l'interface utilisateur plus agréable à regarder.
 
 Pour éxécuter le projet, veuillez juste utiliser la commande python suivante : python3 manage.py runserver.
